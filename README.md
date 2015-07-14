@@ -24,7 +24,7 @@ console.log(jsonString); // Prints the JSON version of someFile.
 
 First, install it globally: `npm install -g vdfjs`
 
-Then, `vdfjs path_to_file`
+Then, `vdfjs path_to_file --out outfile.json`
 
 ## Note
 

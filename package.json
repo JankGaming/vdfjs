@@ -1,6 +1,6 @@
 {
   "name": "vdfjs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Parser for Valve's KeyValue data files - converts VDF to JSON",
   "main": "vdf.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/JankGaming/vdfjs",
   "dependencies": {
-    "lodash": "^3.10.0"
+    "lodash": "^3.10.0",
+    "minimist": "^1.1.1"
   }
 }

@@ -3,7 +3,18 @@
 var vdf = require('../vdf');
 var fs = require('fs');
 
-var fileData = fs.readFileSync(process.argv[2], 'utf-8');
-fs.writeFileSync('out.json', vdf.parse(fileData));
+var argOptions = {
+  alias: {
+    'out': ['o']
+  },
+  default: {
+    'out': 'out.json'
+  }
+};
 
-console.log('Results written to out.json');
+var argv = require('minimist')(process.argv.slice(2), argOptions);
+
+var fileData = fs.readFileSync(argv._[0], 'utf-8');
+fs.writeFileSync(argv.out, vdf.parse(fileData));
+
+console.log('Results written to ' + argv.out);
