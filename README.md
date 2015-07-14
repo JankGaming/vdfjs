@@ -21,7 +21,10 @@ console.log(jsonString); // Prints the JSON version of someFile.
 ```
 
 ### CLI
-`node vdf.js path_to_file`
+
+First, install it globally: `npm install -g vdfjs`
+
+Then, `vdfjs path_to_file`
 
 ## Note
 
