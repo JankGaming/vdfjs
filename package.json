@@ -1,0 +1,26 @@
+{
+  "name": "vdfjs",
+  "version": "0.0.1",
+  "description": "Parser for Valve's KeyValue data files - converts VDF to JSON",
+  "main": "keyvalue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JankGaming/vdfjs.git"
+  },
+  "keywords": [
+    "VDF",
+    "valve"
+  ],
+  "author": "twisterghost",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JankGaming/vdfjs/issues"
+  },
+  "homepage": "https://github.com/JankGaming/vdfjs",
+  "dependencies": {
+    "lodash": "^3.10.0"
+  }
+}
