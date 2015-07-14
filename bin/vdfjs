@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var vdf = require('../vdf');
+var fs = require('fs');
+
+var fileData = fs.readFileSync(process.argv[2], 'utf-8');
+fs.writeFileSync('out.json', vdf.parse(fileData));
+
+console.log('Results written to out.json');

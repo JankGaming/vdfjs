@@ -14,7 +14,7 @@
     "VDF",
     "valve"
   ],
-  "bin": "./vdf.js",
+  "bin": "./bin/vdfjs",
   "author": "twisterghost",
   "license": "MIT",
   "bugs": {
