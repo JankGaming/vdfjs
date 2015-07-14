@@ -1,6 +1,6 @@
 {
   "name": "vdfjs",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Parser for Valve's KeyValue data files - converts VDF to JSON",
   "main": "vdf.js",
   "scripts": {

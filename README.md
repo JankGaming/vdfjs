@@ -15,9 +15,9 @@ var fs = require('fs');
 var vdf = require('vdfjs');
 var someFile = fs.readFileSync('path/to/file.txt', 'utf-8');
 
-var jsonString = vdf.parse(someFile);
+var data = vdf.parse(someFile); // Returns a JS object representing the input file
 
-console.log(jsonString); // Prints the JSON version of someFile.
+console.log(JSON.stringify(data)); // Prints the JSON version of someFile.
 ```
 
 ### CLI

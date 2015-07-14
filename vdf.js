@@ -36,7 +36,7 @@ function parse(vdf) {
     parseLine(line);
   });
 
-  return JSON.stringify(obj);
+  return obj;
 }
 
 exports.parse = parse;

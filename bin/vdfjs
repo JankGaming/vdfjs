@@ -15,6 +15,6 @@ var argOptions = {
 var argv = require('minimist')(process.argv.slice(2), argOptions);
 
 var fileData = fs.readFileSync(argv._[0], 'utf-8');
-fs.writeFileSync(argv.out, vdf.parse(fileData));
+fs.writeFileSync(argv.out, JSON.stringify(vdf.parse(fileData)));
 
 console.log('Results written to ' + argv.out);
