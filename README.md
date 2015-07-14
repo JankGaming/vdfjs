@@ -11,9 +11,13 @@ Convert Valve's KeyValue format to JSON
 ### In a script
 
 ```javascript
+var fs = require('fs');
 var vdf = require('vdfjs');
+var someFile = fs.readFileSync('path/to/file.txt', 'utf-8');
 
-var jsonString = vdf.parse(someVDFfile);
+var jsonString = vdf.parse(someFile);
+
+console.log(jsonString); // Prints the JSON version of someFile.
 ```
 
 ### CLI
