@@ -15,9 +15,6 @@ function parseLine(line) {
   if (match = line.match(levelRegex)) {
     currentLocation.push(match[1]);
   } else if (match = line.match(propertyRegex)) {
-    if (match[2] === null) {
-      console.log(match);
-    }
     _.set(obj, currentLocation.join('.') + '.' + match[1], match[2]);
   }
 
