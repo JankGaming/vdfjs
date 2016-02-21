@@ -6,6 +6,15 @@ var obj = {};
 var levelRegex = /^"([A-Za-z0-9\_\-]*)"$/;
 var propertyRegex = /^"([A-Za-z1-9_\-]*)"[\t\ ]+"(.*)"$/;
 
+function convertToArray(location) {
+  var currentValue = _.get(obj, location);
+  _.set(obj, location, [currentValue]);
+}
+
+function stripComments(line) {
+  return line.replace(/\/\/.+/, '');
+}
+
 function parseLine(line) {
 
   line = line.trim();
@@ -15,14 +24,14 @@ function parseLine(line) {
 
   if (match = line.match(levelRegex)) {
     var matchedKey = match[1];
-    var nextLocation = _.clone(currentLocation);
-    nextLocation.push(matchedKey);
-    nextLocation = nextLocation.join('.');
+    var nextLocation = _.chain(currentLocation).clone().push(matchedKey).value().join('.');
+
+    // If this key already exists, convert it to an array or append to the array
     var checkKey = _.get(obj, nextLocation);
     if (checkKey && !_.isArray(checkKey)) {
       convertToArray(nextLocation);
       currentLocation.push(matchedKey + '[1]');
-    } else if (checkKey && _.isArray(checkKey)){
+    } else if (checkKey){
       nextLocationLength = _.get(obj, nextLocation).length;
       currentLocation.push(matchedKey + '[' + nextLocationLength + ']');
     } else {
@@ -36,15 +45,6 @@ function parseLine(line) {
     currentLocation.pop();
   }
 
-}
-
-function convertToArray(location) {
-  var currentValue = _.get(obj, location);
-  _.set(obj, location, [currentValue]);
-}
-
-function stripComments(line) {
-  return line.replace(/\/\/.+/, '');
 }
 
 function parse(vdf) {
