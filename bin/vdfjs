@@ -5,16 +5,29 @@ var fs = require('fs');
 
 var argOptions = {
   alias: {
-    'out': ['o']
-  },
-  default: {
-    'out': 'out.json'
+    'out': ['o'],
+    'pretty': ['p']
   }
 };
 
 var argv = require('minimist')(process.argv.slice(2), argOptions);
 
-var fileData = fs.readFileSync(argv._[0], 'utf-8');
-fs.writeFileSync(argv.out, JSON.stringify(vdf.parse(fileData)));
+if (argv._.length < 1) {
+  console.error('ERROR: No input file specified');
+  process.exit(1);
+}
 
-console.log('Results written to ' + argv.out);
+var fileData = fs.readFileSync(argv._[0], 'utf-8');
+var results = vdf.parse(fileData);
+
+if (argv.pretty) {
+  results = JSON.stringify(results, null, 2);
+} else {
+  results = JSON.stringify(results);
+}
+
+if (!argv.out) {
+  console.log(results);
+} else {
+  fs.writeFileSync(argv.out, results);
+}
