@@ -44,7 +44,6 @@ function parseLine(line) {
     if (checkKey) {
       if (!_.isArray(checkKey)) {
         convertToArray(nextLocation);
-        console.log(nextLocation);
         checkKey = _.get(obj, nextLocation);
         checkKey.push(match[2]);
       } else {
