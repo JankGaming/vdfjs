@@ -54,7 +54,7 @@ function parseLine(line) {
     }
   }
 
-  if (line === '}') {
+  if (line === '}' || line === '{}') {
     currentLocation.pop();
   }
 
