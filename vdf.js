@@ -12,7 +12,7 @@ function convertToArray(location) {
 }
 
 function stripComments(line) {
-  return line.replace(/\/\/.+/, '');
+  return line.replace(/\/\/.*/, '');
 }
 
 function parseLine(line) {
