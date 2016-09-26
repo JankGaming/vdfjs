@@ -17,9 +17,8 @@ function stripComments(line) {
 
 function parseLine(line) {
 
-  line = line.trim();
-
   line = stripComments(line);
+  line = line.trim();
   var match;
 
   if (match = line.match(levelRegex)) {
@@ -31,14 +30,29 @@ function parseLine(line) {
     if (checkKey && !_.isArray(checkKey)) {
       convertToArray(nextLocation);
       currentLocation.push(matchedKey + '[1]');
-    } else if (checkKey){
+    } else if (checkKey) {
       nextLocationLength = _.get(obj, nextLocation).length;
       currentLocation.push(matchedKey + '[' + nextLocationLength + ']');
     } else {
       currentLocation.push(match[1]);
     }
   } else if (match = line.match(propertyRegex)) {
-    _.set(obj, currentLocation.join('.') + '.' + match[1], match[2]);
+
+    // If this key already exists, append to the array
+    var nextLocation = currentLocation.join('.') + '.' + match[1];
+    var checkKey = _.get(obj, nextLocation);
+    if (checkKey) {
+      if (!_.isArray(checkKey)) {
+        convertToArray(nextLocation);
+        console.log(nextLocation);
+        checkKey = _.get(obj, nextLocation);
+        checkKey.push(match[2]);
+      } else {
+        checkKey.push(match[2]);
+      }
+    } else {
+      _.set(obj, currentLocation.join('.') + '.' + match[1], match[2]);
+    }
   }
 
   if (line === '}') {
